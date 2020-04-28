@@ -148,23 +148,53 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push(["./analitics.js","vendors~analitics~main"]);
+/******/ 	deferredModules.push(["./analitics.ts","vendors~analitics~main"]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./analitics.js":
+/***/ "./analitics.ts":
 /*!**********************!*\
-  !*** ./analitics.js ***!
+  !*** ./analitics.ts ***!
   \**********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction createAnalitics() {\n  var counter = 0;\n  var isDestroyed = false;\n\n  var listener = function listener() {\n    return counter++;\n  };\n\n  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);\n  return {\n    destroy: function destroy() {\n      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);\n      isDestroyed = true;\n    },\n    getClicks: function getClicks() {\n      if (isDestroyed) {\n        return \"Analitics is destroyed\";\n      }\n\n      return counter;\n    }\n  };\n}\n\nwindow.analitics = createAnalitics();\n\n//# sourceURL=webpack:///./analitics.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function createAnalitics() {
+  var counter = 0;
+  var isDestroyed = false;
+
+  var listener = function listener() {
+    return counter++;
+  };
+
+  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);
+  return {
+    destroy: function destroy() {
+      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);
+      isDestroyed = true;
+    },
+    getClicks: function getClicks() {
+      if (isDestroyed) {
+        return "Analitics is destroyed";
+      }
+
+      return counter;
+    }
+  };
+}
+
+window["analitics"] = createAnalitics();
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=analitics.js.map
